@@ -1,6 +1,4 @@
-#waybar,
-#waybar label,
-#waybar button {
+* {
   font-family: "lucide", "JetBrainsMono Nerd Font", sans-serif;
   font-weight: bold;
   font-size: 14px;
@@ -151,17 +149,10 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* --- TOOLTIP DEFINITIVO --- */
 tooltip {
-  background: #0b0d08;
-  border: 1px solid #4c5c3b;
+  background-color: rgba(76, 92, 59, 0.85);
+  text-shadow: none;
   border-radius: 8px;
-  padding: 10px;
-}
-
-tooltip label {
-  color: #ffffff;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 14px;
-  padding: 5px;
+  padding: 8px;
+  font-size: 12px;
 }
