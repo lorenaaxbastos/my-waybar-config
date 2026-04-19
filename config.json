@@ -1,0 +1,152 @@
+{
+  "layer": "top",
+  "position": "top",
+  "spacing" : 0,
+  "tooltips": true,
+
+  "modules-left": [
+    "clock",
+    "custom/uptime",
+    "custom/pomodoro"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-right": [
+    "mpris",
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    "group/power"
+  ],
+
+  "clock": {
+    "format": "{:L%H:%M | %A, %d de %B}",
+    "locale": "pt_BR.UTF-8",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+  },
+
+  "custom/uptime": {
+    "format": "{}",
+    "format-icon": [""],
+    "tooltip": false,
+    "interval": 1600,
+    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
+  },
+
+  "custom/pomodoro": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "waybar-module-pomodoro --no-work-icons",
+    "on-click": "waybar-module-pomodoro toggle",
+    "on-click-right": "waybar-module-pomodoro reset"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": false,
+    "persistent-workspaces": {
+      "DP-1": [1, 2, 3, 4, 5],
+      "HDMI-A-1": [6, 7, 8, 9, 10]
+    },
+    "format-icons": {
+      "active": "",
+      "visible": "",
+      "default": ""
+    }
+  },
+
+  "mpris": {
+    "format": "  {title} - {artist}",
+    "format-paused": "  {title} - {artist}",
+    "max-length": 35,
+    "on-click": "playerctl play-pause"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "{icon}",
+    "format-off": "{icon}",
+    "format-connected":"{icon}",
+    "format-icons":{
+        "on":"",
+        "off": "󰂲",
+        "connected": "󰂱"
+    },
+    "on-click": "blueman-manager",
+    "tooltip-format-connected":"{device_enumerate}"
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪",
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "Conectado a {essid} ({signalStrength}%)",
+    "on-click": "nm-connection-editor"
+  },
+
+  "group/power": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/power",
+      "custom/quit",
+      "custom/reboot"
+    ]
+  },
+
+  "custom/power": {
+    "format": "󱐋",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  },
+
+  "custom/reboot": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+
+  "custom/quit": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit"
+  },
+}
